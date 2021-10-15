@@ -13,7 +13,7 @@ import Foundation
 
 print ("Задание 1")
 func chetnoe (_ value : Double) -> Double {
-(value.truncatingRemainder(dividingBy: 2) == 0) ?
+    (value.truncatingRemainder(dividingBy: 2) == 0) ?
     print ("Число \(value) - Четное \n") :
     print ("Число \(value) - Нечетное \n")
     return value
@@ -26,7 +26,7 @@ let answer = chetnoe(2)
 print ("Задание 2")
 func checking (_ value2 : Double) -> Double {
     if value2.truncatingRemainder(dividingBy: 3) == 0 {
-      print ("Число \(value2) - Делится на 3 \n")
+        print ("Число \(value2) - Делится на 3 \n")
     } else {
         print ("Число \(value2) - Не делится на 3 \n")
     }
@@ -36,10 +36,21 @@ let result = checking (9)
 
 // Задание 3. Создать возрастающий массив из 100 чисел.
 print ("Задание 3")
-let task3 = Array (0...100)
-print ("Массив от 0 ... 100 \n \(task3) \n")
+var ArrayTask3 = Array (0...100)
+print ("Массив от 0 ... 100 \n \(ArrayTask3) \n")
 
 // Задание 4. Удалить из этого массива все четные числа
 // и все числа, которые не делятся на 3.
-print ("Задание 4")
+print ("Задание 4. ")
 
+for value in ArrayTask3 {
+    if (value % 2) == 0 {
+        ArrayTask3.remove(at: ArrayTask3.firstIndex(of: value)!)
+    }
+}
+for value in ArrayTask3 {
+    if (value % 3) != 0 {
+        ArrayTask3.remove(at: ArrayTask3.firstIndex(of: value)!)
+    }
+}
+print ("Массив \(ArrayTask3) \n")
