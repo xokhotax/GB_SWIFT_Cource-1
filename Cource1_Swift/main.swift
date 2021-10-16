@@ -36,21 +36,69 @@ let result = checking (9)
 
 // Задание 3. Создать возрастающий массив из 100 чисел.
 print ("Задание 3")
-var ArrayTask3 = Array (0...100)
-print ("Массив от 0 ... 100 \n \(ArrayTask3) \n")
+var arrayTask3 = Array (0...100)
+print ("Массив от 0 ... 100 \n \(arrayTask3) \n")
 
 // Задание 4. Удалить из этого массива все четные числа
 // и все числа, которые не делятся на 3.
-print ("Задание 4. ")
+print ("Задание 4")
 
-for value in ArrayTask3 {
+for value in arrayTask3 {
     if (value % 2) == 0 {
-        ArrayTask3.remove(at: ArrayTask3.firstIndex(of: value)!)
+        arrayTask3.remove(at: arrayTask3.firstIndex(of: value)!)
     }
 }
-for value in ArrayTask3 {
+for value in arrayTask3 {
     if (value % 3) != 0 {
-        ArrayTask3.remove(at: ArrayTask3.firstIndex(of: value)!)
+        arrayTask3.remove(at: arrayTask3.firstIndex(of: value)!)
     }
 }
-print ("Массив \(ArrayTask3) \n")
+print ("Массив \(arrayTask3) \n")
+
+// Задание 5. Написать функцию, которая добавляет в массив новое число
+// Фибоначи, и добавить при помощи нее 50 элементов
+
+print ("Задание 5")
+var massivFibonachi: [Int] = [0, 1]
+func fibonachi (n: Int, sumOne: Int, sumTwo: Int, counter: Int) {
+   
+    if counter == -1 {
+        print(1)
+    }
+    if counter == n - 2 {
+        return
+    }
+    let sum = sumOne + sumTwo
+    massivFibonachi.append(sum)
+    fibonachi(n: n, sumOne: sumTwo , sumTwo: sum, counter: counter + 1)
+}
+fibonachi(n: 50, sumOne: 0, sumTwo: 1, counter: 0)
+print (" \(massivFibonachi) \n")
+
+//// Задание 6. Заполнить массив из 100 элементов различными простыми числами.
+//Натуральное число, большее единицы, называется простым, если оно делится
+//только на себя и на единицу. Для нахождения всех простых чисел не больше
+//заданного числа n, следуя методу Эратосфена, нужно выполнить следующие шаги:
+//a.    Выписать подряд все целые числа от двух до n (2, 3, 4, ..., n).
+//b.    Пусть переменная p изначально равна двум — первому простому числу.
+//c.    Зачеркнуть в списке числа от 2 + p до n, считая шагом p..
+//d.    Найти первое не зачёркнутое число в списке, большее, чем p, и
+//      присвоить значению переменной p это число.
+//e.    Повторять шаги c и d, пока возможно.
+
+print ("Задание 6")
+let maxArrayValue = 100
+var arrayTask6: [Int] = Array (2...maxArrayValue)
+var p = arrayTask6[0]
+while p * p <= maxArrayValue {
+        arrayTask6.removeAll(where: {$0 >= p * p && $0.isMultiple(of: p) } )
+           p = arrayTask6.first(where: {$0 > p})!
+    }
+print (arrayTask6)
+
+
+
+
+
+
+
