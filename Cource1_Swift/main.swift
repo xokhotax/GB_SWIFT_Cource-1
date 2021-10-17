@@ -61,7 +61,7 @@ print ("Массив \(arrayTask3) \n")
 print ("Задание 5")
 var massivFibonachi: [Int] = [0, 1]
 func fibonachi (n: Int, sumOne: Int, sumTwo: Int, counter: Int) {
-   
+    
     if counter == -1 {
         print(1)
     }
@@ -91,14 +91,20 @@ let maxArrayValue = 100
 var arrayTask6: [Int] = Array (2...maxArrayValue)
 var p = arrayTask6[0]
 while p * p <= maxArrayValue {
-        arrayTask6.removeAll(where: {$0 >= p * p && $0.isMultiple(of: p) } )
-           p = arrayTask6.first(where: {$0 > p})!
-    }
+    arrayTask6.removeAll(where: {$0 >= p * p && $0.isMultiple(of: p) } )
+    p = arrayTask6.first(where: {$0 > p})!
+}
 print (arrayTask6)
 
-
-
-
-
-
+print ("Задание 6. Версия 2. Через функцию.")
+func sito (_ n: Int) -> [Int] {
+    var arrayTask6 = [Int] (2...n)
+    var result: [Int] = []
+    while let p = arrayTask6.first {
+        result.append(p)
+        arrayTask6 = arrayTask6.filter{$0 % p != 0}
+    }
+    return result
+}
+print (sito(100))
 
