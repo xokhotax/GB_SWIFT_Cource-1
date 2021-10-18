@@ -24,7 +24,7 @@
 
 /* Begin PBXFileReference section */
 		0345BD272718A05900556951 /* Cource1_Swift */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Cource1_Swift; sourceTree = BUILT_PRODUCTS_DIR; };
-		0345BD2A2718A05900556951 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		0345BD2A2718A05900556951 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
