@@ -114,6 +114,87 @@ struct StructDefaultCar: DefaultCar {
   
 }
 
+class SportCar : DefaultCar {
+  var carBrand: String
+  var carType: CarType
+  var carHorsePower: Double
+  var transmission: Transmission
+  var doorStatus: DoorsStatus
+  var windowsStatus: WindowsStatus
+  var trunkStatus: TrunkStatus
+  var petrolTunkStatus: PetrolTunkStatus
+  var spareWheelAvailability: SpareWheelAvailability
+  var ignition: Ignition
+  var airDeflector: AirDeflector
+  var carAudion: CarAudio
+  
+  init (carBrand: String,
+        carType: CarType,
+        carHorsePower: Double,
+        transmission: Transmission,
+        doorStatus: DoorsStatus,
+        windowsStatus: WindowsStatus,
+        trunkStatus: TrunkStatus,
+        petrolTunkStatus: PetrolTunkStatus,
+        spareWheelAvailability: SpareWheelAvailability,
+        ignition: Ignition,
+        airDeflector: AirDeflector,
+        carAudio: CarAudio)
+  {
+    self.carBrand = carBrand
+    self.carType = carType
+    self.carHorsePower = carHorsePower
+    self.transmission = transmission
+    self.doorStatus = doorStatus
+    self.windowsStatus = windowsStatus
+    self.trunkStatus = trunkStatus
+    self.petrolTunkStatus = petrolTunkStatus
+    self.spareWheelAvailability = spareWheelAvailability
+    self.ignition = ignition
+    self.airDeflector = airDeflector
+    self.carAudion = carAudio
+  }
+}
+
+class TrunkCar : DefaultCar {
+  var carBrand: String
+  var carType: CarType
+  var carHorsePower: Double
+  var transmission: Transmission
+  var doorStatus: DoorsStatus
+  var windowsStatus: WindowsStatus
+  var trunkStatus: TrunkStatus
+  var petrolTunkStatus: PetrolTunkStatus
+  var spareWheelAvailability: SpareWheelAvailability
+  var ignition: Ignition
+  var unloadingPlatform: UnloadingPlatform
+  
+  init (carBrand: String,
+        carType: CarType,
+        carHorsePower: Double,
+        transmission: Transmission,
+        doorStatus: DoorsStatus,
+        windowsStatus: WindowsStatus,
+        trunkStatus: TrunkStatus,
+        petrolTunkStatus: PetrolTunkStatus,
+        spareWheelAvailability: SpareWheelAvailability,
+        ignition: Ignition,
+        unloadingPlatform: UnloadingPlatform) {
+    self.carBrand = carBrand
+    self.carType = carType
+    self.carHorsePower = carHorsePower
+    self.transmission = transmission
+    self.doorStatus = doorStatus
+    self.windowsStatus = windowsStatus
+    self.trunkStatus = trunkStatus
+    self.petrolTunkStatus = petrolTunkStatus
+    self.spareWheelAvailability = spareWheelAvailability
+    self.ignition = ignition
+    self.unloadingPlatform = unloadingPlatform
+  }
+}
+
+
 // MARK: - Вывод информации об автомобиле
 
 extension DefaultCar {
@@ -183,6 +264,31 @@ extension DefaultCar {
 }
 
 
+// MARK: - Установка Антикрыла
+
+extension SportCar {
+  func addAirDeflector(airDeflector: AirDeflector) {
+    self.airDeflector = airDeflector
+    switch airDeflector {
+      case .available: print("Антикрыло установлено")
+      case .missed: print("Антикрыло отсутствует")
+    }
+  }
+}
+
+
+// MARK: - Устнаовка разгрузочной платформы
+
+extension TrunkCar {
+  func addUnloadingPlatform (unloadingPlatform: UnloadingPlatform) {
+    self.unloadingPlatform = unloadingPlatform
+    switch unloadingPlatform {
+      case .available: print("Платформа установлена")
+      case .missed: print("Платформа отсутствует")
+    }
+  }
+}
+
 var bmw = StructDefaultCar(carBrand: "BMW",
                            carType: .truck,
                            carHorsePower: 120,
@@ -195,12 +301,36 @@ var bmw = StructDefaultCar(carBrand: "BMW",
                            ignition: .ignitionOff)
 bmw.informationPrint()
 bmw.openWindows(windowsStatus: .closed)
-
-//let a = 0
-//a != 0 && a < 0 ? print ("1") : print ("2")
-
 bmw.startCar(ignition: .ignitionON)
 bmw.refilTank(petrolTunkStatus: .full)
 bmw.openDoors(doorStatus: .closed)
 bmw.startCar(ignition: .ignitionON)
 
+let ferrari = SportCar(carBrand: "Ferrai",
+                       carType: .sport,
+                       carHorsePower: 357,
+                       transmission: .auto,
+                       doorStatus: .closed,
+                       windowsStatus: .closed,
+                       trunkStatus: .empty,
+                       petrolTunkStatus: .full,
+                       spareWheelAvailability: .missed,
+                       ignition: .ignitionON,
+                       airDeflector: .missed,
+                       carAudio: .available)
+
+ferrari.addAirDeflector(airDeflector: .available)
+
+let barguzin = TrunkCar(carBrand: "Lada",
+                        carType: .truck,
+                        carHorsePower: 100,
+                        transmission: .manual,
+                        doorStatus: .open,
+                        windowsStatus: .open,
+                        trunkStatus: .full,
+                        petrolTunkStatus: .empty,
+                        spareWheelAvailability: .missed,
+                        ignition: .ignitionON,
+                        unloadingPlatform: .missed)
+
+barguzin.addUnloadingPlatform(unloadingPlatform: .available)
